@@ -1,4 +1,4 @@
-# h-grid
+# H Grid
 
 H Grid is a table view generating jQuery based plugin. I just started building this and will improve it over time and based on your feedback. Feel free to inform me anything that you feel must be incorporated here.
 
