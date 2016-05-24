@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>HGrid Demo</title>
+    <link rel="stylesheet" type="text/css" href="style/hgrid.min.css">
+</head>
+
+<body>
+    <div class='container'>
+        <header class='header'>
+            <div class='header-container'>
+                <h1>H-Grid Sample file</h1>
+            </div>
+        </header>
+        <div class='hgrid'>
+        </div>
+        <div class='params-container'>
+            <p class='section-title'>//basic params</p>
+            <div class='param-definition'>slideSpeed: 3000, <span>//sliding pauses for slideSpeed value, in milliseconds</span></div>
+            
+            <p class='section-title'>//basic</p>
+            <div class='param-definition'>data: [], <span>// array of object used to iterate</span></div>
+            <div class='param-definition'>headers: [], <span>// array of string items consisting title for each th of thead</span></div>
+            <div class='param-definition'>headerRequired: true, <span>//boolean to confirm if header is required or not</span></div>
+            <div class='param-definition'>footers: [], <span>// array of string items consisting title for each th of tfoot</span></div>
+            <div class='param-definition'>footerRequired: true, <span>//boolean to confirm if footer is required or not</span></div>
+            <div class='param-definition'>dataOrder: [], <span>// array of string items consisting key values in the order as that of headers</span></div>
+            <div class='param-definition'>height: '350px', <span>//type int - value should be in px or %</span></div>
+            <div class='param-definition'>width: '100%', <span>//type int - value should be in px or %</span></div>
+            <div class='param-definition'>showTitle: true, <span>//display title if necessary</span></div>
+            <div class='param-definition'>title: 'H-Grid', <span>//display title if necessary</span></div>
+            
+            <p class='section-title'>//controls</p>
+            <div class='param-definition'>paginationRequired: true, <span>// boolean flag to check if pagination is required or not</span></div>
+            <div class='param-definition'>paginateForEach: 10, <span>//type int - count of records for that should display per pagination</span></div>
+            <div class='param-definition'>paginateControl: 'dropdown', <span>//pagination can be a dropdown or a pagination-controller with a list of numbers ['dropdown', 'buttons']</span></div>
+            <div class='param-definition'>paginateClassPrefix: 'paginateController', <span>//class of the pagination controller if its a dropdown</span></div>
+            <div class='param-definition'>includeSerialNumber: true, <span>//set as false if serial number column is not required</span></div>
+            
+            <p class='section-title'>//containers</p>
+            <div class='param-definition'>tableClass: 'hGridContainer', <span>// class for the table</span></div>
+            <div class='param-definition'>theadClass: 'hGridHeaderContainer', <span>// class for the table thead</span></div>
+            <div class='param-definition'>tbodyClass: 'hGridBodyContainer', <span>// class for the table thead</span></div>
+            <div class='param-definition'>tfootClass: 'hGridFooterContainer', <span>// class for the table thead</span></div>
+            <div class='param-definition'>oddRowClass: 'oddRow', <span>// class for the each odd row</span></div>
+            <div class='param-definition'>evenRowClass: 'evenRow', <span>// class for the each even row</span></div>
+        </div>
+        <script src='https://code.jquery.com/jquery-1.12.1.min.js'></script>
+        <script src='js/hgrid.min.js'></script>
+        <script>
+            //implementation code goes here
+            $(document).ready(function() {
+                $('.hgrid').hgrid({
+                    headers: ['name', 'gender', 'email', 'phone', 'city'],
+                    data: [{
+                        "name": "Lucia Hobbs",
+                        "gender": "female",
+                        "email": "luciahobbs@ramjob.com",
+                        "phone": "+1 (825) 548-2095",
+                        "address": "Bourg, District Of Columbia"
+                    }, {
+                        "name": "Justice Mckenzie",
+                        "gender": "male",
+                        "email": "justicemckenzie@ramjob.com",
+                        "phone": "+1 (972) 455-3664",
+                        "address": "Benson, North Carolina"
+                    }, {
+                        "name": "Brandie Garza",
+                        "gender": "female",
+                        "email": "brandiegarza@ramjob.com",
+                        "phone": "+1 (813) 595-2419",
+                        "address": "Dahlen, Nevada"
+                    }, {
+                        "name": "Merrill Harrington",
+                        "gender": "male",
+                        "email": "merrillharrington@ramjob.com",
+                        "phone": "+1 (989) 436-3255",
+                        "address": "Carbonville, Virgin Islands"
+                    }, {
+                        "name": "Francis Hodge",
+                        "gender": "male",
+                        "email": "francishodge@ramjob.com",
+                        "phone": "+1 (910) 521-2872",
+                        "address": "Leeper, Pennsylvania"
+                    }, {
+                        "name": "Deidre Frost",
+                        "gender": "female",
+                        "email": "deidrefrost@ramjob.com",
+                        "phone": "+1 (984) 562-2501",
+                        "address": "Logan, Maryland"
+                    }, {
+                        "name": "Malone Bullock",
+                        "gender": "male",
+                        "email": "malonebullock@ramjob.com",
+                        "phone": "+1 (926) 464-3283",
+                        "address": "Day, Rhode Island"
+                    }, {
+                        "name": "Miles Blackwell",
+                        "gender": "male",
+                        "email": "milesblackwell@ramjob.com",
+                        "phone": "+1 (963) 569-2321",
+                        "address": "Cherokee, Ohio"
+                    }, {
+                        "name": "Walker Lester",
+                        "gender": "male",
+                        "email": "walkerlester@ramjob.com",
+                        "phone": "+1 (861) 565-3160",
+                        "address": "Selma, Illinois"
+                    }, {
+                        "name": "Frieda Little",
+                        "gender": "female",
+                        "email": "friedalittle@ramjob.com",
+                        "phone": "+1 (806) 537-2036",
+                        "address": "Ticonderoga, Oregon"
+                    }, {
+                        "name": "Parker Sweet",
+                        "gender": "male",
+                        "email": "parkersweet@ramjob.com",
+                        "phone": "+1 (852) 552-2031",
+                        "address": "Dodge, Alabama"
+                    }, {
+                        "name": "Sadie Bradford",
+                        "gender": "female",
+                        "email": "sadiebradford@ramjob.com",
+                        "phone": "+1 (984) 507-2368",
+                        "address": "Adelino, Tennessee"
+                    }]
+                });
+            });
+        </script>
+</body>
+
+</html>
