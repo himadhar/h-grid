@@ -75,6 +75,7 @@ header.header h1 {
     border-bottom: 1px solid #767886;
     background: #fff;
     font-size: 14px;
+    table-layout: fixed;
 }
 
 .hGridHeaderContainer {
@@ -153,4 +154,14 @@ header.header h1 {
 	font-weight: normal;
 	color: #929292;
 	margin: 0 15px;
+}
+
+input.editable-field {
+    display: none;
+    width: 98%;
+}
+
+span.editable-span {
+    cursor: pointer;
+    display: block;
 }
