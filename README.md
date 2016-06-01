@@ -8,6 +8,13 @@ To include the file, simply add this line in your project with correct path. Her
 <br/>
 <code>`<script src='js/hgrid.min.js'></script>`</code>
 
+The plugin expects data attribute at the least for it to work. Triggering the plugin to dive into action is as simply as invoking it as shown here below:
+<code>
+$(document).ready(function() {
+    $('.hgrid').hgrid({
+        data: [{}] //this is an array of objects you have to run the plugin and build the table, this is a required param
+</code>
+
 ###Below are the list of params available within the plugin for you to utilize:
 
 ####basic
