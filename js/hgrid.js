@@ -31,6 +31,8 @@
             paginateControl: 'dropdown', //pagination can be a dropdown or a pagination-controller with a list of numbers ['dropdown', 'buttons']
             paginateClassPrefix: 'paginateController', //class of the pagination controller if its a dropdown
             includeSerialNumber: true, //set as false if serial number column is not required
+            editableTableRows: false, // if the entire table's rows data are to be edited
+            editableRowData: {}, // this is an object of data who's keys resemble the header array and the value are either true or false based on their values
             
             //containers
             tableClass: 'hGridContainer', // class for the table
@@ -41,7 +43,8 @@
             evenRowClass: 'evenRow',// class for the each even row
             
             //methods
-            paginateDropdownChange : function() {} // custom method to act while its a pagninate-dropdown chosen and triggers within the onchange method
+            paginateDropdownChange : function() {}, // custom method to act while its a pagninate-dropdown chosen and triggers within the onchange method
+            onEditComplete: function() {} // custom method , will be call when edit is enabled and text field is exited
         }, options);
 
         // slider rendering method below
@@ -98,10 +101,14 @@
             function updateTableContent(tableContent) {
                 $(currentContainer).empty().append(tableContent);
                 setTimeout(function() {
-                    if(options.paginateControl == 'dropdown') {
+                    if(options.paginateControl === 'dropdown') {
                         $('.' + paginateSelector).change(updateTableBody);
                     }
-                }, 1000);
+                
+                    if(options.editableTableRows || checkForAnyColumnToBeEditable()) {
+                        $('.editable-span').off().on('click', editCurrentTd);
+                    }
+                }, 10);
             }
             
             // function that returns the table header string
@@ -136,7 +143,15 @@
                         // build each row in tbody
                         for(var key in temp) {
                             if(temp.hasOwnProperty(key)){
-                                bodyStr += '<td>' + temp[key] + '</td>';                                
+                                var inputField = '<input class="editable-field" value="' + temp[key] + '">';
+                                var tdData = (options.editableTableRows) ? 
+                                             (inputField + '<span class="editable-span">' + temp[key] + '</span>') : ('<span>' + temp[key] + '</span>');
+                                if(options.editableRowData[key] && !options.editableTableRows) {
+                                    tdData = inputField + '<span class="editable-span">' + temp[key] + '</span>';
+                                } else {
+                                    tdData = '<span>' + temp[key] + '</span>';
+                                }
+                                bodyStr += '<td>' + tdData + '</td>';                                
                             }
                         }
                     } else {
@@ -184,6 +199,21 @@
                 return ret;                
             }
             
+            function checkForAnyColumnToBeEditable() {
+                var ret = false;
+                if(sizeOfObject(options.editableRowData) === options.headers.length) {
+                    for(var key in options.editableRowData) {
+                        if(options.editableRowData.hasOwnProperty(key)){
+                            if(options.editableRowData[key]) {
+                                ret = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                return ret;
+            }
+            
             var updateTableBody = function(e) {
                 e.preventDefault();
                 currentPage = (parseInt($(this).val()) - 1) * options.paginateForEach;
@@ -191,6 +221,21 @@
                 $(currentContainer).find('tbody').empty().append(updatedBodyStr);
                 options.paginateDropdownChange();
             };
+            
+            var editCurrentTd = function(e) {
+                $('.editable-span').show();
+                $('.editable-field').hide();
+                $(this).hide();
+                $(this).parent().find('.editable-field').show();
+                $('.editable-field').off().on('blur', saveDataToSpan);
+            }
+            
+            var saveDataToSpan = function(e) {
+                $('.editable-span').show();
+                $('.editable-field').hide();
+                $(this).hide();
+                $(this).parent().find('.editable-span').show().text($(this).val());
+            }
             
             function sizeOfObject(obj) {
                 var len = 0;
