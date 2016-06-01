@@ -12,7 +12,11 @@ The plugin expects data attribute at the least for it to work. Triggering the pl
 <code>
 $(document).ready(function() {
     $('.hgrid').hgrid({
-        data: [{}] //this is an array of objects you have to run the plugin and build the table, this is a required param
+        data: [{
+        
+        }] //this is an array of objects you have to run the plugin and build the table, this is a required param
+    });
+});
 </code>
 
 ###Below are the list of params available within the plugin for you to utilize:
