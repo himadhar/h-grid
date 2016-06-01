@@ -28,6 +28,8 @@ To include the file, simply add this line in your project with correct path. Her
     paginateControl: 'dropdown', //pagination can be a dropdown or a pagination-controller with a list of numbers ['dropdown', 'buttons']
     paginateClassPrefix: 'paginateController', //class of the pagination controller if its a dropdown
     includeSerialNumber: true, //set as false if serial number column is not required
+    editableTableRows: false, // if the entire table's rows data are to be edited
+    editableRowData: {}, // this is an object of data who's keys resemble the header array and the value are either true or false based on their values
     
 ####containers
     tableClass: 'hGridContainer', // class for the table
@@ -39,5 +41,6 @@ To include the file, simply add this line in your project with correct path. Her
     
 ####methods
     paginateDropdownChange : function() {} // custom method to act while its a pagninate-dropdown chosen and triggers within the onchange method
+    onEditComplete: function() {} // custom method , will be call when edit is enabled and text field is exited
     
 You can message me anything that you feel is necessary in this plugin and I will work on it and upload as part of updates.
