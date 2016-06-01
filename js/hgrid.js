@@ -235,6 +235,7 @@
                 $('.editable-field').hide();
                 $(this).hide();
                 $(this).parent().find('.editable-span').show().text($(this).val());
+                options.onEditComplete();
             }
             
             function sizeOfObject(obj) {
